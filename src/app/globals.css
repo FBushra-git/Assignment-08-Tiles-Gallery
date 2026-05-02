@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Apply our custom DaisyUI theme */
+[data-theme="tileslight"] { color-scheme: light; }
+
+:root {
+  --nav-height: 64px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: #faf5f0;
+}
+
+.font-display { font-family: 'Playfair Display', serif; }
+
+/* Tile card hover */
+.tile-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.tile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px -4px rgba(185,112,53,0.18);
+}
+.tile-card img {
+  transition: transform 0.45s ease;
+}
+.tile-card:hover img {
+  transform: scale(1.06);
+}
+
+/* Skeleton shimmer */
+@keyframes shimmer {
+  0%   { background-position: -600px 0; }
+  100% { background-position: 600px 0; }
+}
+.skeleton-box {
+  background: linear-gradient(90deg,#f0e8df 25%,#e3cdb0 50%,#f0e8df 75%);
+  background-size: 600px 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 8px;
+}
+
+/* Page fade in */
+@keyframes pageFade {
+  from { opacity:0; transform:translateY(10px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.page-enter { animation: pageFade 0.45s ease-out; }
+
+/* Marquee strip */
+.marquee-strip {
+  background: #b97035;
+  color: #fff;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 9px 0;
+}
+
+/* Swiper custom colors */
+.swiper-pagination-bullet { background: #b97035 !important; opacity: 0.5; }
+.swiper-pagination-bullet-active { opacity: 1 !important; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #faf5f0; }
+::-webkit-scrollbar-thumb { background: #d9ae7e; border-radius: 3px; }
