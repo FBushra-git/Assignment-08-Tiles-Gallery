@@ -79,7 +79,7 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-screen grid grid-cols-1 lg:grid-cols-2">
-      {/* Left — form */}
+     //left form
       <div className="flex items-center justify-center p-6 sm:p-12 bg-clay-50">
         <div className="w-full max-w-md">
           <Link href="/" className="flex items-center gap-2 mb-8">
@@ -104,7 +104,7 @@ export default function RegisterPage() {
             {field("Email",                  email,    setEmail,    "email",    <FiMail  size={15} />, errors.email,    "you@example.com")}
             {field("Profile Photo URL (opt)", photoURL, setPhotoURL, "text",    <FiImage size={15} />, null,            "https://…")}
 
-            {/* Password with show/hide */}
+            // Password with show/hide
             <div>
               <label className="text-xs font-medium text-gray-600 mb-1 block">Password</label>
               <div className="relative">
@@ -154,7 +154,7 @@ export default function RegisterPage() {
         </div>
       </div>
 
-      {/* Right — image */}
+      //Right image
       <div className="hidden lg:block relative">
         <Image
           src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=900&q=80"

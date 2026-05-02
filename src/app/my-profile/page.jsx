@@ -34,7 +34,7 @@ export default function MyProfilePage() {
           <div className="flex flex-col sm:flex-row items-start sm:items-end gap-4 -mt-14 mb-8 relative z-10">
             <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full ring-4 ring-white shadow-xl overflow-hidden bg-clay-500 flex items-center justify-center text-white text-3xl font-bold shrink-0">
               {user?.image ? (
-                // eslint-disable-next-line @next/next/no-img-element
+                
                 <img src={user.image} alt="Avatar" className="w-full h-full object-cover" />
               ) : (
                 user?.name?.[0]?.toUpperCase() || "U"
