@@ -2,7 +2,18 @@ import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import { MongoClient } from "mongodb";
 
-const client = new MongoClient(process.env.MONGODB_URI);
+if (!global._mongoClient) {
+  global._mongoClient = new MongoClient(process.env.MONGODB_URI, {
+    serverSelectionTimeoutMS: 10000,
+    connectTimeoutMS: 10000,
+    socketTimeoutMS: 10000,
+    maxPoolSize: 10,
+    retryWrites: true,
+    retryReads: true,
+  });
+}
+
+const client = global._mongoClient;
 
 export const auth = betterAuth({
   database: mongodbAdapter(client.db()),

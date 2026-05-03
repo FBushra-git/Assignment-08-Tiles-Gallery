@@ -40,7 +40,7 @@ export default function AllTilesPage() {
           <p className="text-gray-400 text-sm mb-8">
             {loading ? "Loading…" : `${filtered.length} tiles available`}
           </p>
-         //Search 
+         
           <div className="max-w-lg mx-auto relative">
             <FiSearch size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-clay-400 pointer-events-none" />
             <input

@@ -67,7 +67,7 @@ export default function UpdateProfilePage() {
             <p className="text-gray-400 text-sm mb-7">Edit your display name and profile image URL.</p>
 
             <form onSubmit={handleUpdate} className="space-y-5">
-             //Name
+           
               <div>
                 <label className="text-xs font-medium text-gray-600 mb-1 block">Display Name</label>
                 <div className="relative">
@@ -83,7 +83,7 @@ export default function UpdateProfilePage() {
                 {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
               </div>
 
-              //Image URL
+              
               <div>
                 <label className="text-xs font-medium text-gray-600 mb-1 block">Profile Image URL</label>
                 <div className="relative">
@@ -99,7 +99,7 @@ export default function UpdateProfilePage() {
                 <p className="text-xs text-gray-400 mt-1">Paste a direct image link (JPG, PNG, WebP)</p>
               </div>
 
-              //Live & Preview
+              
               {image && (
                 <div className="flex items-center gap-3 bg-clay-50 rounded-xl p-3 border border-clay-100">
                   {/* eslint-disable-next-line @next/next/no-img-element */}

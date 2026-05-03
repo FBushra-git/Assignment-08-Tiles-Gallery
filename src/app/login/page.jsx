@@ -58,7 +58,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen grid grid-cols-1 lg:grid-cols-2">
-    //Left Image 
+    
       <div className="hidden lg:block relative">
         <Image
           src="https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=900&q=80"
@@ -75,7 +75,7 @@ export default function LoginPage() {
         </div>
       </div>
 
-   //Right Image
+   
       <div className="flex items-center justify-center p-6 sm:p-12 bg-clay-50">
         <div className="w-full max-w-md">
           {/* Logo */}
@@ -90,7 +90,7 @@ export default function LoginPage() {
           <h1 className="font-display font-bold text-3xl text-clay-800 mb-1">Welcome back</h1>
           <p className="text-gray-400 text-sm mb-7">Sign in to continue exploring.</p>
 
-       //Error showing
+       
           {errors.form && (
             <div className="bg-red-50 border border-red-200 text-red-600 text-sm rounded-xl px-4 py-3 mb-5">
               {errors.form}
@@ -98,7 +98,7 @@ export default function LoginPage() {
           )}
 
           <form onSubmit={handleLogin} className="space-y-4">
-         //Email
+       
             <div>
               <label className="text-xs font-medium text-gray-600 mb-1 block">Email</label>
               <div className="relative">
@@ -114,7 +114,7 @@ export default function LoginPage() {
               {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
             </div>
 
-            //Password
+            
             <div>
               <label className="text-xs font-medium text-gray-600 mb-1 block">Password</label>
               <div className="relative">
@@ -142,14 +142,14 @@ export default function LoginPage() {
             </button>
           </form>
 
-          //Divider
+         
           <div className="flex items-center gap-3 my-5">
             <div className="flex-1 h-px bg-clay-200" />
             <span className="text-gray-400 text-xs">or continue with</span>
             <div className="flex-1 h-px bg-clay-200" />
           </div>
 
-          //Google
+       
           <button
             onClick={handleGoogle}
             disabled={gLoading}
