@@ -1,69 +1,111 @@
 # 🏛️ Tiles Gallery
 
-A curated web gallery showcasing premium tiles — ceramic, marble, terracotta, mosaic and more.
+### Your Smart Tile Shopping & Discovery Partner
+
+Tiles Gallery is a modern tile-focused eCommerce gallery platform where users can explore and discover premium seasonal and timeless tile collections — ceramic, marble, terracotta, mosaic, zellige, hexagon, and more.
+
+The project is designed with a warm clay-inspired aesthetic, responsive layout, and smooth user experience.
+
+Users can browse tiles from JSON data, view featured top-rated tiles, check product details after login, and manage their profile through a secure authentication system using BetterAuth.
+
+---
 
 ## 🌐 Live URL
-**https://tiles-gallery.vercel.app** *(update after deploying)*
 
-## ✨ Key Features
-- Hero slider with SwiperJS (3 slides, autoplay, fade effect)
-- Animated marquee strip via `react-fast-marquee`
-- Featured tiles (top 4 by rating) fetched from JSON Server
-- Full searchable gallery — search by title, material, category, or tag
-- Email/password authentication + Google OAuth via BetterAuth
-- Private routes: Tile Detail, My Profile, Update Profile
-- Update name & profile image using BetterAuth `updateUser`
-- Fully responsive (mobile, tablet, desktop)
-- Custom 404, loading, and error pages
-- Environment variables for all secrets
+🔗 https://tiles-gallery.vercel.app
 
-## 🚀 Setup
+---
 
-```bash
-# 1. Install dependencies
-npm install
+## 🛠️ Technologies Used
 
-# 2. Fill in your secrets
-# .env.local is already pre-filled
+- Next.js (App Router)
+- Tailwind CSS
+- DaisyUI
+- BetterAuth
+- JavaScript (JSX)
+- JSON Server
+- React Hot Toast
+- SwiperJS
+- React Fast Marquee
+- Environment Variables
+- Vercel
+- MongoDB Atlas
+- Google Cloud Console
+- HTML
+- CSS
 
-# 3. Start JSON Server (tile data) — keep running in separate terminal
-npm run server
+---
 
-# 4. Start Next.js
-npm run dev
-```
+## ✨ 3 Key Features
 
-Open http://localhost:3000
+### 1. 🔒 Protected Tile Details Page
 
-## 📦 NPM Packages
+Users can freely browse all tiles in the gallery and view the home page, but tile detail pages are protected.
 
-| Package | Purpose |
-|---|---|
-| `next@14` | React framework (App Router) |
-| `better-auth` | Auth — email/password + Google OAuth |
-| `mongodb` | Database client for BetterAuth adapter |
-| `swiper` | SwiperJS hero carousel |
-| `react-fast-marquee` | Scrolling marquee strip |
-| `react-hot-toast` | Toast notifications |
-| `react-icons` | Icon set |
-| `tailwindcss` + `daisyui` | Styling |
-| `json-server` | Mock REST API for tile data |
+If a user is not logged in, they are automatically redirected to the login page.
 
-## 🛣️ Routes
+After successful login or registration, they can access the full tile details — including:
 
-| Route | Access |
-|---|---|
-| `/` | Public |
-| `/all-tiles` | Public |
-| `/login` | Public |
-| `/register` | Public |
-| `/tile/[id]` | **Private** |
-| `/my-profile` | **Private** |
-| `/my-profile/update` | **Private** |
+- High-resolution images
+- Specifications
+- Material info
+- Creator details
+- Style descriptions
+- Product tags
 
-## 🚀 Deploy (Vercel)
+---
 
-1. Push to GitHub
-2. Import on vercel.com
-3. Add environment variables
-4. Update `BETTER_AUTH_URL` to your Vercel URL
+### 2. 🔐 BetterAuth Authentication System
+
+Tiles Gallery includes a complete:
+
+- Login system
+- Registration system
+- Google social login
+
+Built using BetterAuth with MongoDB Atlas as the database adapter.
+
+Users can register using:
+
+- Name
+- Email
+- Optional photo URL
+- Password
+
+After login, users can securely access all protected routes.
+
+Real-time toast notifications provide instant feedback for:
+
+- Successful login/register
+- Errors
+- Authentication status
+
+---
+
+### 3. 👤 User Profile & Update Information
+
+Logged-in users can visit the **My Profile** page to view:
+
+- Display name
+- Email address
+- Profile photo
+- Membership date
+
+Users can also update:
+
+- Their name
+- Profile image URL
+
+This is powered by BetterAuth's `updateUser` method, allowing profile updates without re-registering or contacting support.
+
+---
+
+## 📌 Project Purpose
+
+Tiles Gallery was built to create a premium tile discovery experience where users can explore elegant tile collections through a smooth, secure, and visually warm modern web application.
+
+---
+
+## 👨‍💻 Developer
+
+Developed with ❤️ by **Bushra**
