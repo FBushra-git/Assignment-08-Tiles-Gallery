@@ -18,7 +18,7 @@ const client = global._mongoClient;
 export const auth = betterAuth({
   database: mongodbAdapter(client.db()),
   secret:  process.env.BETTER_AUTH_SECRET,
-  baseURL: process.env.BETTER_AUTH_URL || "http://localhost:3000",
+  baseURL: process.env.BETTER_AUTH_URL ||  "https://tiles-gallery.vercel.app",
   emailAndPassword: { enabled: true },
   socialProviders: {
     google: {

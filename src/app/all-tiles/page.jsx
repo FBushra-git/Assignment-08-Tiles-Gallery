@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import TileCard, { TileCardSkeleton } from "@/components/TileCard";
 import { getAllTiles } from "@/lib/api";
 import { FiSearch, FiGrid } from "react-icons/fi";
+import data from "@/data/tiles.json";
 
 export default function AllTilesPage() {
   const [tiles,    setTiles]    = useState([]);
