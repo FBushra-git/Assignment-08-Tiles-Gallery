@@ -12,7 +12,7 @@ Users can browse tiles from JSON data, view featured top-rated tiles, check prod
 
 ## 🌐 Live URL
 
-🔗  https://tiles-gallery-plum.vercel.app/
+🔗 https://tiles-gallery-plum.vercel.app/
 ---
 
 ## 🛠️ Technologies Used
@@ -108,3 +108,4 @@ Tiles Gallery was built to create a premium tile discovery experience where user
 ## 👨‍💻 Developer
 
 Developed with ❤️ by **Bushra**
+
