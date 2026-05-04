@@ -1,29 +1,32 @@
-import { betterAuth } from "better-auth";
-import { mongodbAdapter } from "better-auth/adapters/mongodb";
-import { MongoClient } from "mongodb";
+import { betterAuth } from 'better-auth'
+import { mongodbAdapter } from '@better-auth/mongo-adapter'
+import { MongoClient } from 'mongodb'
 
-if (!global._mongoClient) {
-  global._mongoClient = new MongoClient(process.env.MONGODB_URI, {
-    serverSelectionTimeoutMS: 10000,
-    connectTimeoutMS: 10000,
-    socketTimeoutMS: 10000,
-    maxPoolSize: 10,
-    retryWrites: true,
-    retryReads: true,
-  });
+const uri = process.env.MONGODB_URI
+
+if (!uri) {
+	throw new Error('MONGODB_URI is missing')
 }
 
-const client = global._mongoClient;
+// global cache (VERY important in Vercel)
+let client
+let db
+
+if (!global._mongoClient) {
+	client = new MongoClient(uri)
+	global._mongoClient = client
+} else {
+	client = global._mongoClient
+}
+
+db = client.db('tilesGalleryDB')
 
 export const auth = betterAuth({
-  database: mongodbAdapter(client.db()),
-  secret:  process.env.BETTER_AUTH_SECRET,
-  baseURL: process.env.BETTER_AUTH_URL ||  "https://tiles-gallery.vercel.app",
-  emailAndPassword: { enabled: true },
-  socialProviders: {
-    google: {
-      clientId:     process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    },
-  },
-});
+	database: mongodbAdapter(db, {
+		client,
+	}),
+
+	emailAndPassword: {
+		enabled: true,
+	},
+})

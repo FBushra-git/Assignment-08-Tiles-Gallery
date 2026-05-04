@@ -1,13 +1,15 @@
-import tiles from "../data/tiles.json";
+import data from '../data/tiles.json'
+
+const tiles = data.tiles
 
 export async function getAllTiles() {
-  return tiles;
+	return tiles
 }
 
 export async function getTileById(id) {
-  return tiles.find((t) => t.id == id); // important: ==
+	return tiles.find((t) => t.id == id)
 }
 
 export async function getFeaturedTiles() {
-  return [...tiles].sort((a, b) => b.rating - a.rating).slice(0, 4);
-} 
+	return [...tiles].sort((a, b) => b.rating - a.rating).slice(0, 4)
+}

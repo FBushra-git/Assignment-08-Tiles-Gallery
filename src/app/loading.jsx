@@ -1,9 +1,9 @@
-// src/app/loading.jsx — automatic Next.js loading UI
-import LoadingSpinner from "@/components/LoadingSpinner";
+import LoadingSpinner from '@/components/LoadingSpinner'
+
 export default function Loading() {
-  return (
-    <div className="min-h-[60vh] flex items-center justify-center">
-      <LoadingSpinner message="Loading…" />
-    </div>
-  );
+	return (
+		<div className='min-h-[60vh] flex items-center justify-center'>
+			<LoadingSpinner message='Loading…' />
+		</div>
+	)
 }
