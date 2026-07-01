@@ -3,12 +3,13 @@ import { mongodbAdapter } from '@better-auth/mongo-adapter'
 import { MongoClient } from 'mongodb'
 
 const uri = process.env.MONGODB_URI
+const appUrl = process.env.BETTER_AUTH_URL ||
+	(process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000')
 
 if (!uri) {
 	throw new Error('MONGODB_URI is missing')
 }
 
-// global cache (VERY important in Vercel)
 let client
 let db
 
@@ -22,6 +23,14 @@ if (!global._mongoClient) {
 db = client.db('tilesGalleryDB')
 
 export const auth = betterAuth({
+	baseURL: appUrl,
+	trustedOrigins: [
+		appUrl,
+		'http://localhost:3000',
+		'http://localhost:3001',
+		'https://*.vercel.app',
+	],
+
 	database: mongodbAdapter(db, {
 		client,
 	}),
@@ -37,4 +46,3 @@ export const auth = betterAuth({
 		},
 	},
 })
-
