@@ -12,7 +12,7 @@ Users can browse tiles from JSON data, view featured top-rated tiles, check prod
 
 ## 🌐 Live URL
 
-🔗 https://tiles-gallery-plum.vercel.app/
+[🔗 https://tiles-gallery-plum.vercel.app/](https://assignment-08-tiles-gallery-iota.vercel.app/)
 ---
 
 ## 🛠️ Technologies Used
