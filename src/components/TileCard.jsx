@@ -1,13 +1,12 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FiStar, FiArrowRight } from 'react-icons/fi'
+import { FiArrowRight, FiBox, FiMaximize2, FiStar } from 'react-icons/fi'
 
 export default function TileCard({ tile }) {
 	return (
-		<div className='tile-card bg-white rounded-2xl overflow-hidden border border-clay-100 shadow-sm flex flex-col'>
-			{/* Image */}
-			<div className='relative h-48 overflow-hidden'>
+		<article className='tile-card group flex h-full flex-col overflow-hidden rounded-lg border border-clay-100 bg-white shadow-sm'>
+			<div className='relative h-52 overflow-hidden bg-clay-100'>
 				<Image
 					src={tile.image}
 					alt={tile.title}
@@ -16,79 +15,73 @@ export default function TileCard({ tile }) {
 					sizes='(max-width:640px) 100vw,(max-width:1024px) 50vw,25vw'
 					className='object-cover'
 				/>
-				{/* Category badge */}
-				<span className='absolute top-3 left-3 bg-white/90 text-clay-700 text-xs font-medium px-2.5 py-1 rounded-full capitalize shadow-sm'>
-					{tile.category}
-				</span>
-				{/* Out of stock overlay */}
+				<div className='absolute inset-x-0 top-0 flex items-start justify-between p-3'>
+					<span className='rounded-md bg-white/95 px-2.5 py-1 text-xs font-bold capitalize text-clay-800 shadow-sm'>
+						{tile.category}
+					</span>
+					<div className='flex items-center gap-1 rounded-md bg-clay-900/80 px-2 py-1 text-xs font-semibold text-white backdrop-blur'>
+						<FiStar size={12} className='fill-amber-300 text-amber-300' />
+						{tile.rating}
+					</div>
+				</div>
 				{!tile.inStock && (
-					<div className='absolute inset-0 bg-black/40 flex items-center justify-center'>
-						<span className='text-white text-sm font-semibold bg-black/50 px-3 py-1 rounded-full'>
+					<div className='absolute inset-0 flex items-center justify-center bg-clay-900/55'>
+						<span className='rounded-md bg-white px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-clay-900'>
 							Out of Stock
 						</span>
 					</div>
 				)}
 			</div>
 
-			{/* Content */}
-			<div className='p-4 flex flex-col gap-2 flex-1'>
-				<div className='flex items-start justify-between gap-1'>
-					<h3 className='font-display font-semibold text-clay-800 text-sm leading-snug'>
-						{tile.title}
-					</h3>
-					<div className='flex items-center gap-0.5 shrink-0 text-amber-500'>
-						<FiStar size={12} fill='currentColor' />
-						<span className='text-xs text-gray-500'>{tile.rating}</span>
+			<div className='flex flex-1 flex-col p-4'>
+				<h3 className='font-display text-lg font-bold leading-snug text-clay-900'>
+					{tile.title}
+				</h3>
+
+				<div className='mt-3 grid grid-cols-2 gap-2 text-xs text-gray-500'>
+					<div className='flex items-center gap-1.5 rounded-md bg-clay-50 px-2.5 py-2'>
+						<FiBox size={13} className='text-clay-500' />
+						<span className='truncate'>{tile.material}</span>
+					</div>
+					<div className='flex items-center gap-1.5 rounded-md bg-clay-50 px-2.5 py-2'>
+						<FiMaximize2 size={13} className='text-clay-500' />
+						<span className='truncate'>{tile.dimensions}</span>
 					</div>
 				</div>
 
-				{/* Tags */}
-				<div className='flex gap-1.5 flex-wrap'>
-					<span className='bg-clay-100 text-clay-700 text-xs px-2 py-0.5 rounded-full'>
-						{tile.material}
-					</span>
-					<span className='bg-clay-100 text-clay-700 text-xs px-2 py-0.5 rounded-full'>
-						{tile.dimensions}
-					</span>
-				</div>
-
-				<p className='text-gray-400 text-xs leading-relaxed line-clamp-2 flex-1'>
+				<p className='mt-3 line-clamp-2 flex-1 text-sm leading-relaxed text-gray-500'>
 					{tile.description}
 				</p>
 
-				{/* Price + button */}
-				<div className='flex items-center justify-between pt-3 border-t border-clay-50 mt-auto'>
+				<div className='mt-4 flex items-center justify-between border-t border-clay-100 pt-4'>
 					<div>
-						<p className='text-xs text-gray-400'>From</p>
-						<p className='font-display font-semibold text-clay-700'>
-							${tile.price}
-						</p>
+						<p className='text-[11px] font-bold uppercase tracking-widest text-gray-400'>From</p>
+						<p className='font-display text-xl font-bold text-clay-800'>${tile.price}</p>
 					</div>
-					<Link
-						href={`/tile/${tile.id}`}
-						className='flex items-center gap-1 text-xs font-semibold bg-clay-100 hover:bg-clay-200 text-clay-700 px-3 py-2 rounded-xl transition-colors'
-					>
-						Details <FiArrowRight size={12} />
+					<Link href={`/tile/${tile.id}`} className='inline-flex items-center gap-1.5 rounded-lg bg-clay-700 px-3.5 py-2.5 text-xs font-bold text-white transition-colors hover:bg-clay-800'>
+						Details <FiArrowRight size={13} />
 					</Link>
 				</div>
 			</div>
-		</div>
+		</article>
 	)
 }
 
-// Skeleton card for loading state
 export function TileCardSkeleton() {
 	return (
-		<div className='bg-white rounded-2xl overflow-hidden border border-clay-100'>
-			<div className='skeleton-box h-48 w-full' />
-			<div className='p-4 space-y-2.5'>
-				<div className='skeleton-box h-4 w-3/4' />
-				<div className='skeleton-box h-3 w-1/2' />
+		<div className='overflow-hidden rounded-lg border border-clay-100 bg-white'>
+			<div className='skeleton-box h-52 w-full' />
+			<div className='space-y-3 p-4'>
+				<div className='skeleton-box h-5 w-3/4' />
+				<div className='grid grid-cols-2 gap-2'>
+					<div className='skeleton-box h-8 w-full' />
+					<div className='skeleton-box h-8 w-full' />
+				</div>
 				<div className='skeleton-box h-3 w-full' />
 				<div className='skeleton-box h-3 w-5/6' />
-				<div className='flex justify-between pt-2'>
-					<div className='skeleton-box h-5 w-16' />
-					<div className='skeleton-box h-8 w-24 rounded-xl' />
+				<div className='flex justify-between border-t border-clay-100 pt-4'>
+					<div className='skeleton-box h-8 w-16' />
+					<div className='skeleton-box h-9 w-24' />
 				</div>
 			</div>
 		</div>

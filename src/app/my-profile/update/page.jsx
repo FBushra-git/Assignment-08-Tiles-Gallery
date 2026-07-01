@@ -1,27 +1,27 @@
-// src/app/my-profile/update/page.jsx — Update name & image (PRIVATE)
-
+// src/app/my-profile/update/page.jsx - Update name & image (PRIVATE)
 "use client";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FiUser, FiImage, FiArrowLeft, FiCheck } from "react-icons/fi";
+import { FiArrowLeft, FiCheck, FiImage, FiUser } from "react-icons/fi";
 import toast from "react-hot-toast";
 import ProtectedRoute from "@/components/ProtectedRoute";
-import { useSession, updateUser } from "@/lib/auth-client";
+import { updateUser, useSession } from "@/lib/auth-client";
 
 export default function UpdateProfilePage() {
   const router = useRouter();
   const { data: session } = useSession();
   const user = session?.user;
-
-  const [name,    setName]    = useState("");
-  const [image,   setImage]   = useState("");
+  const [name, setName] = useState("");
+  const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
-  const [errors,  setErrors]  = useState({});
+  const [errors, setErrors] = useState({});
 
-  // Pre-fill with current data when session loads
   useEffect(() => {
-    if (user) { setName(user.name || ""); setImage(user.image || ""); }
+    if (user) {
+      setName(user.name || "");
+      setImage(user.image || "");
+    }
   }, [user]);
 
   const validate = () => {
@@ -36,12 +36,10 @@ export default function UpdateProfilePage() {
     if (!validate()) return;
     setLoading(true);
     try {
-      // BetterAuth updateUser patches the user record in MongoDB
       const res = await updateUser({ name: name.trim(), image: image.trim() || undefined });
-      if (res?.error) {
-        toast.error(res.error.message || "Update failed");
-      } else {
-        toast.success("Profile updated!");
+      if (res?.error) toast.error(res.error.message || "Update failed");
+      else {
+        toast.success("Profile updated");
         router.push("/my-profile");
       }
     } catch {
@@ -53,72 +51,45 @@ export default function UpdateProfilePage() {
 
   return (
     <ProtectedRoute>
-      <div className="page-enter min-h-screen bg-clay-50 flex items-center justify-center px-4 py-16">
-        <div className="w-full max-w-md">
-          <Link
-            href="/my-profile"
-            className="flex items-center gap-1.5 text-clay-600 hover:text-clay-800 text-sm font-medium mb-6 transition-colors"
-          >
+      <div className="page-enter min-h-screen bg-[#fffaf5] px-4 py-12">
+        <div className="mx-auto w-full max-w-xl">
+          <Link href="/my-profile" className="mb-6 inline-flex items-center gap-2 text-sm font-bold text-clay-700 transition-colors hover:text-clay-900">
             <FiArrowLeft /> Back to Profile
           </Link>
 
-          <div className="bg-white rounded-2xl border border-clay-100 shadow-sm p-8">
-            <h1 className="font-display font-bold text-2xl text-clay-800 mb-1">Update Profile</h1>
-            <p className="text-gray-400 text-sm mb-7">Edit your display name and profile image URL.</p>
+          <div className="rounded-lg border border-clay-100 bg-white p-6 shadow-sm sm:p-8">
+            <p className="mb-2 text-xs font-bold uppercase tracking-[0.22em] text-clay-500">Account Settings</p>
+            <h1 className="font-display text-3xl font-bold text-clay-900">Update Profile</h1>
+            <p className="mt-2 text-sm leading-6 text-gray-500">Change your display name and optional profile image link.</p>
 
-            <form onSubmit={handleUpdate} className="space-y-5">
-           
+            <form onSubmit={handleUpdate} className="mt-7 space-y-5">
               <div>
-                <label className="text-xs font-medium text-gray-600 mb-1 block">Display Name</label>
+                <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-gray-500">Display Name</label>
                 <div className="relative">
-                  <FiUser size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-clay-400" />
-                  <input
-                    type="text"
-                    placeholder="Your name"
-                    value={name}
-                    onChange={e => setName(e.target.value)}
-                    className={`w-full pl-9 pr-4 py-2.5 rounded-xl border bg-clay-50 text-sm focus:outline-none focus:border-clay-400 ${errors.name ? "border-red-400" : "border-clay-200"}`}
-                  />
+                  <FiUser size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-clay-500" />
+                  <input type="text" placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} className={`w-full rounded-lg border bg-white py-3 pl-10 pr-4 text-sm outline-none transition-colors focus:border-clay-500 ${errors.name ? "border-red-400" : "border-clay-200"}`} />
                 </div>
-                {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
+                {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
               </div>
 
-              
               <div>
-                <label className="text-xs font-medium text-gray-600 mb-1 block">Profile Image URL</label>
+                <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-gray-500">Profile Image URL</label>
                 <div className="relative">
-                  <FiImage size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-clay-400" />
-                  <input
-                    type="text"
-                    placeholder="https://example.com/photo.jpg"
-                    value={image}
-                    onChange={e => setImage(e.target.value)}
-                    className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-clay-200 bg-clay-50 text-sm focus:outline-none focus:border-clay-400"
-                  />
+                  <FiImage size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-clay-500" />
+                  <input type="text" placeholder="https://example.com/photo.jpg" value={image} onChange={(e) => setImage(e.target.value)} className="w-full rounded-lg border border-clay-200 bg-white py-3 pl-10 pr-4 text-sm outline-none transition-colors focus:border-clay-500" />
                 </div>
-                <p className="text-xs text-gray-400 mt-1">Paste a direct image link (JPG, PNG, WebP)</p>
+                <p className="mt-1 text-xs text-gray-400">Paste a direct image link: JPG, PNG, or WebP.</p>
               </div>
 
-              
               {image && (
-                <div className="flex items-center gap-3 bg-clay-50 rounded-xl p-3 border border-clay-100">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={image}
-                    alt="Preview"
-                    className="w-12 h-12 rounded-full object-cover border border-clay-200"
-                    onError={e => e.currentTarget.style.display = "none"}
-                  />
-                  <p className="text-xs text-gray-400">Image preview</p>
+                <div className="flex items-center gap-3 rounded-lg border border-clay-100 bg-clay-50 p-3">
+                  <img src={image} alt="Preview" className="h-12 w-12 rounded-lg border border-clay-200 object-cover" onError={(e) => (e.currentTarget.style.display = "none")} />
+                  <p className="text-xs font-semibold text-gray-500">Image preview</p>
                 </div>
               )}
 
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full flex items-center justify-center gap-2 bg-clay-500 hover:bg-clay-600 disabled:opacity-60 text-white font-semibold py-3 rounded-xl transition-colors"
-              >
-                {loading ? "Updating…" : <><FiCheck /> Update Information</>}
+              <button type="submit" disabled={loading} className="flex w-full items-center justify-center gap-2 rounded-lg bg-clay-700 py-3 text-sm font-bold text-white transition-colors hover:bg-clay-800 disabled:opacity-60">
+                {loading ? "Updating..." : <><FiCheck /> Update Information</>}
               </button>
             </form>
           </div>
