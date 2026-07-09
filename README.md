@@ -8,10 +8,10 @@ Tiles Gallery is a modern tile-focused web application where users can explore p
 
 ## 🌐 Live Demo
 
-* 🌍 **Live Website:** (https://assignment-08-tiles-gallery-iota.vercel.app/)
+* 🌍 **Live Website:** https://assignment-08-tiles-gallery-iota.vercel.app/
 * 💻 **GitHub Repository:** https://github.com/FBushra-git/Assignment-09-client-side
 
-> *(Replace the live URL above if your deployed URL is different.)*
+
 
 ---
 
