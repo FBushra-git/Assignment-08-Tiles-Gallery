@@ -1,112 +1,198 @@
-# 🏛️ Tiles Gallery
+# 🏺 Tiles Gallery
 
 ### Your Smart Tile Shopping & Discovery Partner
 
-Tiles Gallery is a modern tile-focused eCommerce gallery platform where users can explore and discover premium seasonal and timeless tile collections — ceramic, marble, terracotta, mosaic, zellige, hexagon, and more.
-
-The project is designed with a warm clay-inspired aesthetic, responsive layout, and smooth user experience.
-
-Users can browse tiles from JSON data, view featured top-rated tiles, check product details after login, and manage their profile through a secure authentication system using BetterAuth.
+Tiles Gallery is a modern tile-focused web application where users can explore premium ceramic, marble, terracotta, mosaic, zellige, hexagon, and other decorative tile collections. Built with **Next.js** and **BetterAuth**, the platform offers a smooth, responsive, and secure browsing experience with protected product details and user profile management.
 
 ---
 
-## 🌐 Live URL
+## 🌐 Live Demo
 
-[Live Site](https://assignment-08-tiles-gallery-iota.vercel.app/)
+* 🌍 **Live Website:** (https://assignment-08-tiles-gallery-iota.vercel.app/)
+* 💻 **GitHub Repository:** https://github.com/FBushra-git/Assignment-09-client-side
+
+> *(Replace the live URL above if your deployed URL is different.)*
+
+---
+
+## 🚀 Core Features
+
+### 🔒 Protected Tile Details
+
+* Browse tile collections without logging in.
+* Tile details are protected by authentication.
+* Unauthenticated users are redirected to the login page.
+* View high-resolution images, specifications, material information, creator details, tags, and style descriptions after login.
+
+### 🔐 Secure Authentication
+
+* Email & password authentication using **BetterAuth**.
+* Google Sign-In support.
+* Secure session management with MongoDB Atlas.
+* Real-time authentication feedback using toast notifications.
+
+### 👤 User Profile Management
+
+* View profile information.
+* Update display name.
+* Update profile photo.
+* Membership information displayed automatically.
+
+### 🏺 Premium Tile Collections
+
+* Browse seasonal and timeless tile collections.
+* Featured top-rated products on the homepage.
+* Modern responsive gallery layout.
+* Smooth navigation and interactive UI.
+
+### 📱 Responsive Design
+
+* Optimized for desktop, tablet, and mobile devices.
+* Clean and elegant clay-inspired user interface.
+
 ---
 
 ## 🛠️ Technologies Used
 
-- Next.js (App Router)
-- Tailwind CSS
-- DaisyUI
-- BetterAuth
-- JavaScript (JSX)
-- JSON Server
-- React Hot Toast
-- SwiperJS
-- React Fast Marquee
-- Environment Variables
-- Vercel
-- MongoDB Atlas
-- Google Cloud Console
-- HTML
-- CSS
+### Frontend
+
+* Next.js (App Router)
+* React.js
+* JavaScript (JSX)
+* HTML5
+* CSS3
+* Tailwind CSS
+* DaisyUI
+
+### Authentication
+
+* BetterAuth
+* Google OAuth
+
+### Backend & Database
+
+* MongoDB Atlas
+* JSON Server
+
+### Libraries
+
+* Swiper.js
+* React Hot Toast
+* React Fast Marquee
+
+### Deployment
+
+* Vercel
 
 ---
 
-## ✨ 3 Key Features
+## 📦 Dependencies
 
-### 1. 🔒 Protected Tile Details Page
-
-Users can freely browse all tiles in the gallery and view the home page, but tile detail pages are protected.
-
-If a user is not logged in, they are automatically redirected to the login page.
-
-After successful login or registration, they can access the full tile details — including:
-
-- High-resolution images
-- Specifications
-- Material info
-- Creator details
-- Style descriptions
-- Product tags
+```bash
+next
+react
+react-dom
+tailwindcss
+daisyui
+better-auth
+mongodb
+react-hot-toast
+swiper
+react-fast-marquee
+```
 
 ---
 
-### 2. 🔐 BetterAuth Authentication System
+## ⚙️ Run Locally
 
-Tiles Gallery includes a complete:
+### 1. Clone the repository
 
-- Login system
-- Registration system
-- Google social login
+```bash
+git clone https://github.com/FBushra-git/Assignment-09-client-side.git
+```
 
-Built using BetterAuth with MongoDB Atlas as the database adapter.
+### 2. Navigate to the project folder
 
-Users can register using:
+```bash
+cd Assignment-09-client-side
+```
 
-- Name
-- Email
-- Optional photo URL
-- Password
+### 3. Install dependencies
 
-After login, users can securely access all protected routes.
+```bash
+npm install
+```
 
-Real-time toast notifications provide instant feedback for:
+### 4. Create a `.env.local` file
 
-- Successful login/register
-- Errors
-- Authentication status
+```env
+NEXT_PUBLIC_API_URL=your_api_url
+MONGODB_URI=your_mongodb_connection_string
+BETTER_AUTH_SECRET=your_secret
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+```
 
----
+### 5. Start the development server
 
-### 3. 👤 User Profile & Update Information
+```bash
+npm run dev
+```
 
-Logged-in users can visit the **My Profile** page to view:
+Open your browser and visit:
 
-- Display name
-- Email address
-- Profile photo
-- Membership date
-
-Users can also update:
-
-- Their name
-- Profile image URL
-
-This is powered by BetterAuth's `updateUser` method, allowing profile updates without re-registering or contacting support.
-
----
-
-## 📌 Project Purpose
-
-Tiles Gallery was built to create a premium tile discovery experience where users can explore elegant tile collections through a smooth, secure, and visually warm modern web application.
+```text
+http://localhost:3000
+```
 
 ---
 
-## 👨‍💻 Developer
+## 📂 Project Structure
 
-Developed with ❤️ by **Bushra**
+```text
+app
+├── components
+├── dashboard
+├── profile
+├── tiles
+├── login
+├── register
+├── api
+├── hooks
+├── lib
+├── public
+└── styles
+```
 
+---
 
+## 🎯 Project Purpose
+
+Tiles Gallery was built to create a premium tile discovery experience where users can explore elegant tile collections through a secure, responsive, and visually appealing web application. The project demonstrates modern full-stack development practices using Next.js, BetterAuth, MongoDB Atlas, and Tailwind CSS.
+
+---
+
+## 🔗 Resources
+
+* 🌍 Live Website
+* 📖 Next.js Documentation
+* 🎨 Tailwind CSS
+* 🌼 DaisyUI
+* 🔐 BetterAuth
+* 🍃 MongoDB Atlas
+* 🚀 Vercel
+
+---
+
+## 👩‍💻 Developer
+
+**Nusrat Tasmin Bushra**
+
+* 🌐 Portfolio: https://bushra-portfolio-ebon.vercel.app/
+* 💻 GitHub: https://github.com/FBushra-git
+* 💼 LinkedIn: https://www.linkedin.com/in/nusrat-tasmin-bushra/
+* 📧 Email: [bushratasmin5202@gmail.com](mailto:bushratasmin5202@gmail.com)
+
+---
+
+⭐ **If you enjoyed this project, consider giving it a star on GitHub!**
